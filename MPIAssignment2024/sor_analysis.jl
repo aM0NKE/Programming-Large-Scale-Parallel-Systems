@@ -13,7 +13,9 @@ include("sor_test.jl")
 const nruns = 5
 
 function case_name(args...)
-    name = String(sprint(show, hash(args))[3:end])
+    # name = String(sprint(show, hash(args))[3:end])
+    # case_name(matrix_id, N, stopdiff, maxiters)
+    name = "case_$(join(args, "_"))"
 end
 
 function experiment(params)
@@ -23,7 +25,7 @@ function experiment(params)
     stopdiff = params["stopdiff"]
     maxiters = params["maxiters"]
     test_matrix = SORTEST.test_matrices[matrix_id]
-    name = case_name(matrix_id, N, stopdiff, maxiters)
+    name = case_name(N, matrix_id, stopdiff, maxiters)
 
     # Initialize MPI
     comm = MPI.Comm_dup(MPI.COMM_WORLD)
@@ -46,7 +48,7 @@ function experiment(params)
         results["min_timings"] = minimum(timings)
         results["actual_iters"] = actual_iters
         results["actual_diff"] = actual_diff
-        open("$(name)_seq.json", "w") do f
+        open("results/$(name)_seq.json", "w") do f
             JSON.print(f, results)
         end
     else
@@ -75,7 +77,7 @@ function experiment(params)
             results["min_timings"] = minimum(timings)
             results["actual_iters"] = actual_iters
             results["actual_diff"] = actual_diff
-            open("$(name)_np$(nranks).json", "w") do f
+            open("results/$(name)_np$(nranks).json", "w") do f
                 JSON.print(f, results)
             end
         end

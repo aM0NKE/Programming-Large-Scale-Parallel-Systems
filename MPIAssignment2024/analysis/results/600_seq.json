@@ -1,1 +1,1 @@
-{"actual_diff":0,"maxiters":1000,"timings":[1.149514694,1.112859991,1.113930449,1.115012806,1.116492395],"P":1,"N":600,"matrix_id":3,"stopdiff":1.0e-20,"min_timings":1.112859991,"actual_iters":1000}
+{"actual_diff":0,"maxiters":1000,"timings":[1.151168605,1.110935081,1.112693142,1.112611708,1.112329634],"P":1,"N":600,"matrix_id":3,"stopdiff":1.0e-20,"min_timings":1.110935081,"actual_iters":1000}
