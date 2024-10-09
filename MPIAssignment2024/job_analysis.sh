@@ -10,7 +10,7 @@ JULIAFLAGS="-O3 --check-bounds=no"
 
 # Set parameters
 # Note that the matrix size must be divisible by the number of processors i.e. mod(N, P) = 0
-N_values=(100 200 300 400)      # Matrix sizes
+N_values=(600 1200 2400 4000)      # Matrix sizes
 P_values=(1 2 4 5 8)                # Number of Processors
 stopdiff=1e-20                      # Stopping Criterion
 maxiters=1000                       # Maximum Iteration
